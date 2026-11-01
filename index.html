@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>一起做服装 · 服装制造与供应链导航</title>
+  <meta name="description" content="一起做服装（17zfz.com）——服装制造资源导航，汇集服装工厂、面料供应商、辅料配件、设备工具与供应链服务。">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', Roboto, system-ui, sans-serif;
+      background: #121212;
+      color: #eaeaea;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 主容器 */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 5rem;
+    }
+
+    /* 顶部区域 */
+    .header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid #2e2e2e;
+      padding-bottom: 1.5rem;
+    }
+
+    .logo-area h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-area h1 span {
+      font-size: 0.85rem;
+      font-weight: 500;
+      background: #2a2a2a;
+      padding: 0.25rem 1rem;
+      border-radius: 40px;
+      color: #b0b0b0;
+      letter-spacing: 0.03em;
+      border: 1px solid #3d3d3d;
+    }
+
+    .header-meta {
+      font-size: 0.9rem;
+      color: #9a9a9a;
+      display: flex;
+      gap: 1.5rem;
+      background: #1c1c1c;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      border: 1px solid #2e2e2e;
+    }
+
+    .header-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #6fcf97;
+      display: inline-block;
+    }
+
+    /* 简介 */
+    .intro {
+      margin-bottom: 3rem;
+      max-width: 780px;
+    }
+
+    .intro p {
+      font-size: 1.15rem;
+      color: #b5b5b5;
+      border-left: 4px solid #e6b91e;
+      padding-left: 1.5rem;
+      font-weight: 400;
+    }
+
+    .intro .domain {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      color: #e6b91e;
+      background: #1e1e1e;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      border: 1px solid #3a3a3a;
+      letter-spacing: 0.04em;
+    }
+
+    /* 分类筛选栏 */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1rem;
+      margin-bottom: 3rem;
+      padding: 0.5rem 0;
+    }
+
+    .filter-btn {
+      background: #1e1e1e;
+      border: 1px solid #333;
+      color: #b0b0b0;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 0.7rem 1.8rem;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      letter-spacing: 0.02em;
+    }
+
+    .filter-btn:hover {
+      background: #2a2a2a;
+      border-color: #5a5a5a;
+      color: #ffffff;
+    }
+
+    .filter-btn.active {
+      background: #e6b91e;
+      border-color: #e6b91e;
+      color: #121212;
+      font-weight: 600;
+    }
+
+    /* 资源网格 */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* 卡片 */
+    .card {
+      background: #1a1a1a;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 1.6rem;
+      border: 1px solid #2a2a2a;
+      transition: transform 0.2s, border-color 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #e6b91e;
+      box-shadow: 0 12px 30px -10px rgba(230, 185, 30, 0.15);
+    }
+
+    /* 图标区域 */
+    .card-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      background: #252525;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #e6b91e;
+      margin-bottom: 1.4rem;
+      border: 1px solid #333;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 650;
+      margin-bottom: 0.3rem;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .category-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #e6b91e;
+      font-weight: 600;
+      margin-bottom: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #a0a0a0;
+      line-height: 1.5;
+      margin-bottom: 1.6rem;
+      flex: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #707070;
+      border-top: 1px solid #2a2a2a;
+      padding-top: 1rem;
+      transition: color 0.2s;
+    }
+
+    .card:hover .card-footer {
+      color: #d4d4d4;
+    }
+
+    .footer-arrow {
+      font-size: 1.1rem;
+      transition: transform 0.2s;
+    }
+
+    .card:hover .footer-arrow {
+      transform: translateX(4px);
+      color: #e6b91e;
+    }
+
+    /* 空状态 */
+    .no-result {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #7a7a7a;
+      font-size: 1.1rem;
+      background: #1c1c1c;
+      border-radius: 32px;
+      border: 1px dashed #333;
+    }
+
+    /* 底部 */
+    .footer {
+      margin-top: 5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #5e5e5e;
+      border-top: 1px solid #262626;
+      padding-top: 2.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer a {
+      color: #8a8a8a;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover {
+      color: #e6b91e;
+      text-decoration: underline;
+    }
+
+    /* 移动端 */
+    @media (max-width: 700px) {
+      .container {
+        padding: 1.5rem 1rem 3rem;
+      }
+
+      .logo-area h1 {
+        font-size: 1.7rem;
+        gap: 0.5rem;
+      }
+
+      .logo-area h1 span {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.8rem;
+      }
+
+      .header {
+        margin-bottom: 2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .header-meta {
+        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
+      }
+
+      .intro p {
+        font-size: 1rem;
+        padding-left: 1rem;
+      }
+
+      .filter-btn {
+        padding: 0.55rem 1.3rem;
+        font-size: 0.8rem;
+      }
+
+      .grid {
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        padding: 1.4rem 1.2rem 1.2rem;
+      }
+
+      .card-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 1.2rem;
+        border-radius: 12px;
+      }
+
+      .card h3 {
+        font-size: 1.1rem;
+      }
+
+      .card p {
+        font-size: 0.82rem;
+      }
+
+      .footer {
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 头部 -->
+    <header class="header">
+      <div class="logo-area">
+        <h1>
+          一起做服装
+          <span>17zfz.com</span>
+        </h1>
+      </div>
+      <div class="header-meta">
+        <span><span class="dot"></span> 工厂直连</span>
+        <span>📦 供应链</span>
+        <span>⚙️ 生产工具</span>
+      </div>
+    </header>
+
+    <!-- 简介 -->
+    <div class="intro">
+      <p>服装制造资源导航 · 汇集工厂、面料、辅料、设备与供应链服务，助力服装生产与采购。</p>
+      <div class="domain">www.17zfz.com</div>
+    </div>
+
+    <!-- 分类筛选 -->
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" data-category="all">全部资源</button>
+      <button class="filter-btn" data-category="factory">服装工厂</button>
+      <button class="filter-btn" data-category="fabric">面料供应商</button>
+      <button class="filter-btn" data-category="accessory">辅料/配件</button>
+      <button class="filter-btn" data-category="equipment">设备/工具</button>
+      <button class="filter-btn" data-category="service">供应链服务</button>
+    </div>
+
+    <!-- 网格容器 -->
+    <div class="grid" id="gridContainer"></div>
+
+    <!-- 底部 -->
+    <footer class="footer">
+      <span>© 2025 一起做服装 · 17zfz.com</span>
+      <a href="#">关于我们</a>
+      <a href="#">提交资源</a>
+      <a href="#">免责声明</a>
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      // ---------- 服装制造资源数据（一起做服装） ----------
+      const resources = [
+        {
+          name: '东方针织制衣',
+          icon: '东',
+          category: 'factory',
+          categoryName: '服装工厂',
+          desc: '专注针织服装代工，30年经验，支持小批量定制。',
+          url: '#'
+        },
+        {
+          name: '华纺面料',
+          icon: '华',
+          category: 'fabric',
+          categoryName: '面料供应商',
+          desc: '棉、麻、丝、化纤全品类面料，现货与定织。',
+          url: '#'
+        },
+        {
+          name: 'YKK拉链',
+          icon: 'YKK',
+          category: 'accessory',
+          categoryName: '辅料/配件',
+          desc: '全球知名拉链品牌，品质稳定，交期准。',
+          url: '#'
+        },
+        {
+          name: '兄弟缝纫设备',
+          icon: '兄',
+          category: 'equipment',
+          categoryName: '设备/工具',
+          desc: '工业缝纫机、裁剪设备、整烫设备一站式供应。',
+          url: '#'
+        },
+        {
+          name: '云供应链',
+          icon: '云',
+          category: 'service',
+          categoryName: '供应链服务',
+          desc: '服装柔性供应链平台，打样、生产、仓储一体化。',
+          url: '#'
+        },
+        {
+          name: '南通家纺工厂',
+          icon: '通',
+          category: 'factory',
+          categoryName: '服装工厂',
+          desc: '家纺与服装加工，出口品质，承接OEM/ODM。',
+          url: '#'
+        },
+        {
+          name: '鲁泰纺织',
+          icon: '鲁',
+          category: 'fabric',
+          categoryName: '面料供应商',
+          desc: '色织面料龙头，衬衫面料全球领先。',
+          url: '#'
+        },
+        {
+          name: 'SBS拉链',
+          icon: 'SBS',
+          category: 'accessory',
+          categoryName: '辅料/配件',
+          desc: '国内拉链头部品牌，性价比高，品类齐全。',
+          url: '#'
+        },
+        {
+          name: '杰克缝纫机',
+          icon: '杰',
+          category: 'equipment',
+          categoryName: '设备/工具',
+          desc: '工业缝纫机与自动化设备，服务全球服装工厂。',
+          url: '#'
+        },
+        {
+          name: '衣加科技',
+          icon: '衣',
+          category: 'service',
+          categoryName: '供应链服务',
+          desc: '数字化服装供应链，小单快反，7天出货。',
+          url: '#'
+        },
+        {
+          name: '东莞毛织厂',
+          icon: '莞',
+          category: 'factory',
+          categoryName: '服装工厂',
+          desc: '毛织、针织服装生产，支持来样定制。',
+          url: '#'
+        },
+        {
+          name: '新乡化纤',
+          icon: '新',
+          category: 'fabric',
+          categoryName: '面料供应商',
+          desc: '再生纤维素纤维、氨纶等化纤原料与面料。',
+          url: '#'
+        },
+        {
+          name: '伟星辅料',
+          icon: '伟',
+          category: 'accessory',
+          categoryName: '辅料/配件',
+          desc: '纽扣、织带、花边等服装辅料集成供应商。',
+          url: '#'
+        },
+        {
+          name: '大豪科技',
+          icon: '大',
+          category: 'equipment',
+          categoryName: '设备/工具',
+          desc: '刺绣机控制系统与自动化设备。',
+          url: '#'
+        },
+        {
+          name: '环球资源',
+          icon: '环',
+          category: 'service',
+          categoryName: '供应链服务',
+          desc: 'B2B贸易平台，连接服装工厂与全球买家。',
+          url: '#'
+        }
+      ];
+
+      const grid = document.getElementById('gridContainer');
+      const filterBar = document.getElementById('filterBar');
+
+      // ---------- 渲染卡片 ----------
+      function renderCards(category = 'all') {
+        const filtered = category === 'all'
+          ? resources
+          : resources.filter(item => item.category === category);
+
+        if (filtered.length === 0) {
+          grid.innerHTML = `<div class="no-result">🔍 该分类暂无资源，敬请期待</div>`;
+          return;
+        }
+
+        grid.innerHTML = filtered.map(item => `
+          <a href="${item.url}" class="card" target="_blank" rel="noopener noreferrer">
+            <div class="card-icon">${item.icon}</div>
+            <h3>${item.name}</h3>
+            <div class="category-tag">${item.categoryName}</div>
+            <p>${item.desc}</p>
+            <div class="card-footer">
+              <span>访问资源</span>
+              <span class="footer-arrow">→</span>
+            </div>
+          </a>
+        `).join('');
+      }
+
+      // ---------- 事件监听 ----------
+      filterBar.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const category = btn.dataset.category;
+        renderCards(category);
+      });
+
+      // 初始渲染
+      renderCards('all');
+    })();
+  </script>
+</body>
+</html>
